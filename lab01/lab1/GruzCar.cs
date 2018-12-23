@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace lab1
 {
-    public class GruzCar: Vehicle
+    public class GruzCar: Vehicle, IComparable<GruzCar>, IEquatable<GruzCar>
     {
         protected const int carWidth = 100;
         protected const int carHeight = 60;
@@ -90,6 +90,73 @@ namespace lab1
             return MaxSpeed + ";" + Weight + ";" + MainColor.Name;
         }
 
+        public int CompareTo(GruzCar other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return MaxSpeed.CompareTo(other.MaxSpeed);
+            }
+            if (Weight != other.Weight)
+            {
+                return Weight.CompareTo(other.Weight);
+            }
+            if (MainColor != other.MainColor)
+            {
+                MainColor.Name.CompareTo(other.MainColor.Name);
+            }
+            return 0;
+        }
 
+        public bool Equals(GruzCar other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            /*   if (GetType().Name != other.GetType().Name)
+               {
+                   return false;
+               }
+               if (MaxSpeed != other.MaxSpeed)
+               {
+               return false;
+               }
+               if (Weight != other.Weight)
+               {
+                   return false;
+               }*/
+            if (MainColor != other.MainColor)
+            {
+                return false;
+            }
+            return true;
+        }        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            GruzCar carObj = obj as GruzCar;
+            if (carObj == null)
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(carObj);
+            }
+        }
+        /// <summary>
+        /// Перегрузка метода от object
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

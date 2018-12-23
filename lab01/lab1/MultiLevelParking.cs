@@ -13,7 +13,7 @@ namespace lab1
         /// <summary>
         /// Сколько мест на каждом уровне
         /// </summary>
-        private const int countPlaces = 15;
+        private const int countPlaces = 20;
         private int pictureWidth;
         /// <summary>
         /// Высота окна отрисовки
@@ -26,6 +26,7 @@ namespace lab1
             {
                 parkingStages.Add(new Parking<I_Transport>(countPlaces, pictureWidth,
                pictureHeight));
+                // throw here 
             }
         }
         public Parking<I_Transport> this[int ind]
@@ -39,7 +40,7 @@ namespace lab1
                 return null;
             }
         }
-        public void SaveData(string filename)
+        public bool SaveData(string filename)
         {
             if (File.Exists(filename))
             {
@@ -49,35 +50,34 @@ namespace lab1
             {
                 using (BufferedStream bs = new BufferedStream(fs))
                 {
-                    //Записываем количество уровней
                     WriteToFile("CountLeveles:" + parkingStages.Count +
                    Environment.NewLine, fs);
                     foreach (var level in parkingStages)
                     {
-                        //Начинаем уровень
                         WriteToFile("Level" + Environment.NewLine, fs);
                         for (int i = 0; i < countPlaces; i++)
                         {
                             try
                             {
                                 var car = level[i];
-                                if (car.GetType().Name == "GruzCar")
-                                {
-                                    WriteToFile(i + ":GruzCar:", fs);
-                                }
-                                if (car.GetType().Name == "SamosvalCar")
-                                {
-                                    WriteToFile(i + ":SamosvalCar:", fs);
-                                }
-                                WriteToFile(car + Environment.NewLine, fs);
+                                
+                                    if (car.GetType().Name == "GruzCar")
+                                    {
+                                        WriteToFile(i + ":GruzCar:", fs);
+                                    }
+                                    if (car.GetType().Name == "SamosvalCar")
+                                    {
+                                        WriteToFile(i + ":SamosvalCar:", fs);
+                                    }
+                                    WriteToFile(car + Environment.NewLine, fs);                               
                             }
-                            catch (Exception ex) { }
                             finally { }
                         }
                     }
                 }
             }
-        }        private void WriteToFile(string text, FileStream stream)
+            return true;
+        }        private void WriteToFile(string text, FileStream stream)
         {
             byte[] info = new UTF8Encoding(true).GetBytes(text);
             stream.Write(info, 0, info.Length);
@@ -108,7 +108,9 @@ namespace lab1
                         int count = Convert.ToInt32(bufferTextFromFile.Split(':')[1]);
                         parkingStages = new List<Parking<I_Transport>>(count);
                     }
-
+                    else {
+                        throw new Exception("Неверный формат файла");
+                    }
                     I_Transport car = null;
 
                     //идем по считанным записям 
@@ -138,6 +140,9 @@ namespace lab1
             }
             return true;
         }
-
+        public void Sort()
+        {
+            parkingStages.Sort();
+        }
     }
 }

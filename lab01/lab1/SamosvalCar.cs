@@ -14,8 +14,8 @@ namespace lab1
         Left,
         Right
     }
-    class SamosvalCar :  GruzCar
-    {        
+    class SamosvalCar :  GruzCar, IComparable<SamosvalCar>, IEquatable<SamosvalCar>
+    {
         public Color DopColor { private set; get; }
         public bool Toner { private set; get; }
         public Color  WhellColor { private set; get; }
@@ -82,6 +82,81 @@ namespace lab1
         {
             return MaxSpeed + ";" + Weight + ";" + MainColor.Name + ";" + DopColor.Name + ";" + Toner + ";" +
            WhellColor.Name + ";" + Kuzovsize + ";" + Line;
+        }
+
+        public int CompareTo(SamosvalCar other)
+        {
+            var res = (this is GruzCar).CompareTo(other is GruzCar);
+            if (res != 0)
+            {
+                return res;
+            }
+            if (DopColor != other.DopColor)
+            {
+                DopColor.Name.CompareTo(other.DopColor.Name);
+            }
+            if (Toner != other.Toner)
+            {
+                return Toner.CompareTo(other.Toner);
+            }
+            if (Kuzovsize != other.Kuzovsize)
+            {
+                return Kuzovsize.CompareTo(other.Kuzovsize);
+            }
+            if (Line != other.Line)
+            {
+                return Line.CompareTo(other.Line);
+            }            
+            return 0;
+        }
+        public bool Equals(SamosvalCar other)
+        {
+            var res = (this as GruzCar).Equals(other as GruzCar);
+            if (!res)
+            {
+                return res;
+            }
+       /*     if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (Toner != other.Toner)
+            {
+                return false;
+            }
+            if (Kuzovsize != other.Kuzovsize)
+            {
+                return false;
+            }
+            if (Line != other.Line)
+            {
+                return false;
+            }           */
+            return true;
+        }
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            SamosvalCar carObj = obj as SamosvalCar;
+            if (carObj == null)
+            {
+                return Equals(obj as GruzCar);
+            }
+            else
+            {
+            return Equals(carObj);
+            }
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }
