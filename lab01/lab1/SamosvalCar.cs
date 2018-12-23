@@ -36,9 +36,9 @@ namespace lab1
             Pen bpen = new Pen(Color.Black);
             Brush brush = new SolidBrush(MainColor);
             Brush kuzov = new SolidBrush(DopColor);
-            Brush whellc = new SolidBrush(WhellColor);
+            Brush whellc = new SolidBrush(DopColor);
             Brush white = new SolidBrush(Color.White);
-            Brush toner = new SolidBrush(Color.Black);
+            Brush toner = new SolidBrush(DopColor);
             base.DrawCar(g);
             //g.DrawRectangle(pen, _startPosX + 80, _startPosY -6, 80, 40);
             //g.FillRectangle(brush, _startPosX + 80, _startPosY -6, 80, 40);
@@ -57,6 +57,10 @@ namespace lab1
                 g.DrawRectangle(pen, _startPosX + 80, _startPosY - 6, 80 * (int)Kuzovsize, 40);
                 g.FillRectangle(brush, _startPosX + 80, _startPosY - 6, 80 * (int)Kuzovsize, 40);
             }
+        }
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
         }
     }
 }

@@ -20,6 +20,11 @@ namespace lab1
            
         }
 
+        public void SetMainColor(Color color)
+        {
+            throw new NotImplementedException();
+        }
+
         public void SetPosition(int x, int y, int width, int height)
         {
            

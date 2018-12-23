@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace lab1
 {
     class MultiLevelParking
-    { // сделал 3 лабу с мультипарковкой, ошибся
+    {
         List<Parking<I_Transport>> parkingStages;
         /// <summary>
         /// Сколько мест на каждом уровне

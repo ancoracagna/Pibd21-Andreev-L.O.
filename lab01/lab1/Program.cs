@@ -6,6 +6,8 @@ using System.Windows.Forms;
 
 namespace lab1
 {
+    public delegate void carDelegate(I_Transport car);
+
     static class Program
     {
         /// <summary>

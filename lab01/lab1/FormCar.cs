@@ -12,7 +12,7 @@ namespace lab1
 {
     public partial class FormCar : Form
     {
-        MultiLevelParking parking;        private const int countLevel = 5;
+        MultiLevelParking parking;        private const int countLevel = 5;        FormGruzConfig form;
         private GruzCar samosval;
         public FormCar()
         {
@@ -22,7 +22,8 @@ namespace lab1
             {
                 listBoxLevels.Items.Add("Уровень " + (i + 1));
             }
-            listBoxLevels.SelectedIndex = 0;
+            listBoxLevels.SelectedIndex = 0;           
+
         }
 
         private void FormCar_Load(object sender, EventArgs e)
@@ -65,26 +66,7 @@ namespace lab1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Random rnd = new Random();
-            ColorDialog dialog = new ColorDialog();
-            if (listBoxLevels.SelectedIndex > -1)
-            {
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    ColorDialog dialogDop = new ColorDialog();
-                    if (dialogDop.ShowDialog() == DialogResult.OK)
-                    {
-                        var car = new SamosvalCar(100, 1000, dialog.Color, dialogDop.Color, true, 1, true);
-                        int place = parking[listBoxLevels.SelectedIndex] + car;
-                        if (place == -1)
-                        {
-                            MessageBox.Show("Нет свободных мест", "Ошибка",
-                           MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        Draw();
-                    }
-                }
-            }
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -137,5 +119,27 @@ namespace lab1
                 listBoxLevels.SelectedIndex = index + 1;
             }
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            form = new FormGruzConfig();
+            form.AddEvent(AddCar);
+            form.Show();
+        }
+        private void AddCar(I_Transport car)
+        {
+            if (car != null && listBoxLevels.SelectedIndex > -1)
+            {
+                int place = parking[listBoxLevels.SelectedIndex] + car;
+                if (place > -1)
+                {
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Машину не удалось поставить");
+                }
+            }
+        }
     }
 }

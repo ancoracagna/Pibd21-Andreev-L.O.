@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.PicSamosval = new System.Windows.Forms.PictureBox();
-            this.setCarBtn = new System.Windows.Forms.Button();
-            this.SetSamosvalBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBoxTakeCar = new System.Windows.Forms.PictureBox();
@@ -39,6 +37,7 @@
             this.listBoxLevels = new System.Windows.Forms.ListBox();
             this.UpBtn = new System.Windows.Forms.Button();
             this.DownBtn = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PicSamosval)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeCar)).BeginInit();
@@ -52,26 +51,6 @@
             this.PicSamosval.Size = new System.Drawing.Size(810, 589);
             this.PicSamosval.TabIndex = 0;
             this.PicSamosval.TabStop = false;
-            // 
-            // setCarBtn
-            // 
-            this.setCarBtn.Location = new System.Drawing.Point(835, 201);
-            this.setCarBtn.Name = "setCarBtn";
-            this.setCarBtn.Size = new System.Drawing.Size(153, 52);
-            this.setCarBtn.TabIndex = 1;
-            this.setCarBtn.Text = "Припарковать грузовик";
-            this.setCarBtn.UseVisualStyleBackColor = true;
-            this.setCarBtn.Click += new System.EventHandler(this.buttonCreate_Click);
-            // 
-            // SetSamosvalBtn
-            // 
-            this.SetSamosvalBtn.Location = new System.Drawing.Point(834, 259);
-            this.SetSamosvalBtn.Name = "SetSamosvalBtn";
-            this.SetSamosvalBtn.Size = new System.Drawing.Size(153, 51);
-            this.SetSamosvalBtn.TabIndex = 6;
-            this.SetSamosvalBtn.Text = "Припарковать самосвал";
-            this.SetSamosvalBtn.UseVisualStyleBackColor = true;
-            this.SetSamosvalBtn.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox1
             // 
@@ -150,18 +129,27 @@
             this.DownBtn.UseVisualStyleBackColor = true;
             this.DownBtn.Click += new System.EventHandler(this.DownBtn_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(835, 218);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(153, 37);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Заказать авто";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // FormCar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1005, 589);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.DownBtn);
             this.Controls.Add(this.UpBtn);
             this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.SetSamosvalBtn);
-            this.Controls.Add(this.setCarBtn);
             this.Controls.Add(this.PicSamosval);
             this.Name = "FormCar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -178,8 +166,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox PicSamosval;
-        private System.Windows.Forms.Button setCarBtn;
-        private System.Windows.Forms.Button SetSamosvalBtn;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox pictureBoxTakeCar;
@@ -188,6 +174,7 @@
         private System.Windows.Forms.ListBox listBoxLevels;
         private System.Windows.Forms.Button UpBtn;
         private System.Windows.Forms.Button DownBtn;
+        private System.Windows.Forms.Button button1;
     }
 }
 
