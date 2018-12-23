@@ -53,6 +53,8 @@
     </Compile>
     <Compile Include="GruzCar.cs" />
     <Compile Include="I_Transport.cs" />
+    <Compile Include="MultiLevelParking.cs" />
+    <Compile Include="Parking.cs" />
     <Compile Include="Plane.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
