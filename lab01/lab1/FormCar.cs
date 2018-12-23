@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,12 +13,12 @@ namespace lab1
 {
     public partial class FormCar : Form
     {
-        MultiLevelParking parking;        FormGruzConfig form;        private const int countLevel = 5;
+        MultiLevelParking parking;        FormGruzConfig form;        private const int countLevel = 5;        private Logger logger;
         private GruzCar samosval;
         public FormCar()
         {
             InitializeComponent();
-
+            logger = LogManager.GetCurrentClassLogger();
             parking = new MultiLevelParking(countLevel, PicSamosval.Width, PicSamosval.Height);
             for (int i = 0; i < countLevel; i++)
             {
@@ -87,6 +88,8 @@ Convert.ToInt32(maskedTextBox1.Text);
                        pictureBoxTakeCar.Height);
                         car.DrawCar(gr);
                         pictureBoxTakeCar.Image = bmp;
+                        logger.Info("Изъят автомобиль " + car.ToString() + " с места " +
+                       maskedTextBox1.Text);
                         Draw();
                     }
                     catch (ParkingNotFoundException ex)
@@ -96,6 +99,7 @@ Convert.ToInt32(maskedTextBox1.Text);
                         Bitmap bmp = new Bitmap(pictureBoxTakeCar.Width,
                        pictureBoxTakeCar.Height);
                         pictureBoxTakeCar.Image = bmp;
+                        logger.Error("Ненайден грузовик для изъятия");
                     }
                     catch (Exception ex)
                     {
@@ -142,12 +146,15 @@ Convert.ToInt32(maskedTextBox1.Text);
                 try
                 {
                     int place = parking[listBoxLevels.SelectedIndex] + car;
+                    logger.Info("Добавлен автомобиль " + car.ToString() + " на место " +
+                    place);
                     Draw();
                 }
                 catch (ParkingOverflowException ex)
                 {
                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
+                    logger.Error("Переполнение парковки, невозможно добавить грузовик");
                 }
                 catch (Exception ex)
                 {
@@ -167,6 +174,7 @@ Convert.ToInt32(maskedTextBox1.Text);
                     parking.SaveData(saveFileDialog1.FileName);
                     MessageBox.Show("Сохранение прошло успешно", "Результат",
                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Сохранено в файл " + saveFileDialog1.FileName);
 
                 }
                 catch (Exception ex)
@@ -186,10 +194,12 @@ Convert.ToInt32(maskedTextBox1.Text);
                     parking.LoadData(openFileDialog1.FileName);
                     MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
                    MessageBoxIcon.Information);
+                    logger.Info("Загружено из файла " + openFileDialog1.FileName);
                 }
                 catch(ParkingOccupiedPlaceException ex)
                 {
                     MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error("Место занято!");
                 }
                 catch(Exception ex)
                 {
