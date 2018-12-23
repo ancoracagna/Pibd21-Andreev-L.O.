@@ -67,5 +67,15 @@ namespace lab1
            PicSamosval.Height);
             Draw();
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            samosval = new SamosvalCar(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green,
+           Color.Yellow, true, 2, true);
+            samosval.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), PicSamosval.Width,
+           PicSamosval.Height);
+            Draw();
+        }
     }
 }
