@@ -17,7 +17,16 @@ namespace lab1
             MaxSpeed = maxSpeed;
             Weight = weight;
             MainColor = mainColor;
-        }        public override void MoveTransport(Direction direction)
+        }        public GruzCar(string info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 3)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+            }
+        }        public override void MoveTransport(Direction direction)
         {
             float step = MaxSpeed * 100 / Weight;
             switch (direction)
@@ -76,6 +85,11 @@ namespace lab1
             g.DrawRectangle(pen, _startPosX + 55, _startPosY, 15, 15);
             g.FillRectangle(white, _startPosX + 55, _startPosY, 15, 15);            
         }
-
+        public override string ToString()
+        {
+            return MaxSpeed + ";" + Weight + ";" + MainColor.Name;
         }
+
+
     }
+}

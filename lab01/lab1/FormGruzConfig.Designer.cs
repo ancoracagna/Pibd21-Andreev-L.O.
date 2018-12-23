@@ -154,7 +154,7 @@
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.panel6.BackColor = System.Drawing.Color.Orange;
             this.panel6.Location = new System.Drawing.Point(82, 210);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(38, 37);
@@ -215,6 +215,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(38, 37);
             this.panel2.TabIndex = 0;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // buttonAdd
             // 
