@@ -18,18 +18,14 @@ namespace lab1
             InitializeComponent();
         }
 
-        private void FormCar_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonCreate_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
             samosval = new GruzCar(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Yellow);
            samosval.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), PicSamosval.Width,
            PicSamosval.Height);
-            Draw();          }
+            Draw();
+          }
         private void Draw()
         {
             Bitmap bmp = new Bitmap(PicSamosval.Width, PicSamosval.Height);
