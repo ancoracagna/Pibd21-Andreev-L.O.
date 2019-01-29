@@ -13,7 +13,8 @@ namespace lab1
         Down,
         Left,
         Right
-    }
+    }
+
     class SamosvalCar :  GruzCar
     {        
         public Color DopColor { private set; get; }
@@ -29,7 +30,8 @@ namespace lab1
             Toner = toner;
             Kuzovsize = kuzovsize;
             Line = line;
-        }       
+        }
+       
         public override void DrawCar(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
@@ -40,8 +42,6 @@ namespace lab1
             Brush white = new SolidBrush(Color.White);
             Brush toner = new SolidBrush(Color.Black);
             base.DrawCar(g);
-            //g.DrawRectangle(pen, _startPosX + 80, _startPosY -6, 80, 40);
-            //g.FillRectangle(brush, _startPosX + 80, _startPosY -6, 80, 40);
             if (Toner)
             {
                 g.DrawRectangle(pen, _startPosX + 55, _startPosY, 15,15);
