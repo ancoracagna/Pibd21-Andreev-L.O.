@@ -54,7 +54,7 @@ namespace lab1
             Draw();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void CreateSamosvalButton_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
             samosval = new SamosvalCar(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green,
