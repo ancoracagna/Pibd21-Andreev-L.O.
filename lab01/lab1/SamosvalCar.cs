@@ -7,13 +7,6 @@ using System.Threading.Tasks;
 
 namespace lab1
 {
-    public enum Direction
-    {
-        Up,
-        Down,
-        Left,
-        Right
-    }
 
     class SamosvalCar :  GruzCar
     {        
