@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -17,7 +17,8 @@ namespace lab1
             MaxSpeed = maxSpeed;
             Weight = weight;
             MainColor = mainColor;
-        }        public override void MoveTransport(Direction direction)
+        }
+        public override void MoveTransport(Direction direction)
         {
             float step = MaxSpeed * 100 / Weight;
             switch (direction)
