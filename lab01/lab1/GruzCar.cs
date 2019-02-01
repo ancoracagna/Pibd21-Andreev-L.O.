@@ -17,11 +17,13 @@ namespace lab1
             MaxSpeed = maxSpeed;
             Weight = weight;
             MainColor = mainColor;
-        }        public override void MoveTransport(Direction direction)
+        }
+        public override void MoveTransport(Direction direction)
         {
             float step = MaxSpeed * 100 / Weight;
             switch (direction)
             {
+            
                 // вправо
                 case Direction.Right:
                     if (_startPosX + step < _pictureWidth - carWidth)
